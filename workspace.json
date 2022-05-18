@@ -3,6 +3,7 @@
   "version": 2,
   "projects": {
     "algorithms": "libs/algorithms",
+    "wasm": "libs/wasm",
     "web": "apps/web"
   }
 }
