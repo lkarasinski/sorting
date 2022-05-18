@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@sorting/functions": ["libs/functions/src/index.ts"],
       "@sorting/types": ["libs/types/src/index.ts"],
       "@sorting/ui": ["libs/ui/src/index.ts"]
     }

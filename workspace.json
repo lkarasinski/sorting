@@ -3,6 +3,7 @@
   "version": 2,
   "projects": {
     "algorithms": "libs/algorithms",
+    "functions": "libs/functions",
     "types": "libs/types",
     "ui": "libs/ui",
     "wasm": "libs/wasm",
