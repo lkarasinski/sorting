@@ -11,3 +11,5 @@ export interface VisualizationData {
   values: number[];
   states: BoxStateType[];
 }
+
+export type SortingAlgorithms = 'bubble' | 'quick';
