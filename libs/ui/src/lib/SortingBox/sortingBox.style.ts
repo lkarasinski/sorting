@@ -10,13 +10,13 @@ export const Box = styled('div', {
         background: '#333',
       },
       compare: {
-        background: '#f00',
+        background: 'hsl(201, 80%, 30%)',
       },
       swap: {
-        background: '#0f0',
+        background: 'hsl(201, 100%, 48%)',
       },
       highlight: {
-        background: '#ff0',
+        background: 'hsl(349, 90%, 61%)',
       },
     },
   },
