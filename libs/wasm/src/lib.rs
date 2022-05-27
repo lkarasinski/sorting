@@ -10,3 +10,10 @@ pub fn bubble_sort(array: Vec<f64>) -> String {
     let json = serde_json::to_string(&steps).unwrap();
     return json;
 }
+#[wasm_bindgen]
+pub fn quick_sort(array: Vec<usize>) -> String {
+    let mut array = array.to_vec();
+    let steps = algorithms::quick_sort::quick_sort(&mut array);
+    let json = serde_json::to_string(&steps).unwrap();
+    return json;
+}
