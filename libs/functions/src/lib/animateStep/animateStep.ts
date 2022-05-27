@@ -19,12 +19,6 @@ export const animateStep = async ({
   step,
   delay,
 }: Props) => {
-  changeState(visualizationData.states, step.targets, 'compare');
-  setVisualizationData({
-    values: [...visualizationData.values],
-    states: [...visualizationData.states],
-  });
-  await sleep(delay);
   if (step.type === 'swap') {
     swap(visualizationData.values, step.targets[0], step.targets[1]);
     changeState(visualizationData.states, step.targets, 'swap');
@@ -35,4 +29,26 @@ export const animateStep = async ({
     await sleep(delay);
   }
   changeState(visualizationData.states, step.targets, 'default');
+  if (step.type === 'compare') {
+    changeState(visualizationData.states, step.targets, 'compare');
+    setVisualizationData({
+      values: [...visualizationData.values],
+      states: visualizationData.states,
+    });
+    await sleep(delay);
+  }
+  changeState(visualizationData.states, step.targets, 'default');
+
+  if (step.type === 'highlight') {
+    changeState(visualizationData.states, step.targets, 'highlight');
+    setVisualizationData({
+      values: [...visualizationData.values],
+      states: visualizationData.states,
+    });
+  }
+
+  setVisualizationData({
+    values: [...visualizationData.values],
+    states: visualizationData.states,
+  });
 };
