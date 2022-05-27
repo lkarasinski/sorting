@@ -10,7 +10,7 @@ type Props = {
   visualizationData: VisualizationData;
   setVisualizationData: SetArrayType;
   step: Step;
-  delay: number;
+  delay: React.MutableRefObject<number>;
 };
 
 export const animateStep = async ({
@@ -26,7 +26,7 @@ export const animateStep = async ({
       values: [...visualizationData.values],
       states: visualizationData.states,
     });
-    await sleep(delay);
+    await sleep(delay.current);
   }
   changeState(visualizationData.states, step.targets, 'default');
   if (step.type === 'compare') {
@@ -35,7 +35,7 @@ export const animateStep = async ({
       values: [...visualizationData.values],
       states: visualizationData.states,
     });
-    await sleep(delay);
+    await sleep(delay.current);
   }
   changeState(visualizationData.states, step.targets, 'default');
 

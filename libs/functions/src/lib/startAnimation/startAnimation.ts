@@ -5,7 +5,7 @@ type Props = {
   visualizationData: VisualizationData;
   setVisualizationData: React.Dispatch<React.SetStateAction<VisualizationData>>;
   steps: Step[];
-  delay: number;
+  delay: React.MutableRefObject<number>;
 };
 
 export const startAnimation = async ({
