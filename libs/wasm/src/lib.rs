@@ -17,3 +17,9 @@ pub fn quick_sort(array: Vec<usize>) -> String {
     let json = serde_json::to_string(&steps).unwrap();
     return json;
 }
+#[wasm_bindgen]
+pub fn insertion_sort(array: Vec<f64>) -> String {
+    let steps = algorithms::insertion_sort::insertion_sort(array);
+    let json = serde_json::to_string(&steps).unwrap();
+    return json;
+}
