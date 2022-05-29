@@ -30,3 +30,11 @@ pub fn selection_sort(array: Vec<f64>) -> String {
     let json = serde_json::to_string(&steps).unwrap();
     return json;
 }
+
+#[wasm_bindgen]
+pub fn heap_sort(array: Vec<usize>) -> String {
+    let mut array = array.to_vec();
+    let steps = algorithms::heap_sort::heap_sort(&mut array);
+    let json = serde_json::to_string(&steps).unwrap();
+    return json;
+}

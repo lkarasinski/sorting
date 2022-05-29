@@ -12,4 +12,9 @@ export interface VisualizationData {
   states: BoxStateType[];
 }
 
-export type SortingAlgorithms = 'bubble' | 'quick' | 'insertion' | 'selection';
+export type SortingAlgorithms =
+  | 'bubble'
+  | 'quick'
+  | 'insertion'
+  | 'selection'
+  | 'heap';
