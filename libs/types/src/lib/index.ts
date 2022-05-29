@@ -17,4 +17,5 @@ export type SortingAlgorithms =
   | 'quick'
   | 'insertion'
   | 'selection'
-  | 'heap';
+  | 'heap'
+  | 'gnome';
