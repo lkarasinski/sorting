@@ -23,3 +23,10 @@ pub fn insertion_sort(array: Vec<f64>) -> String {
     let json = serde_json::to_string(&steps).unwrap();
     return json;
 }
+
+#[wasm_bindgen]
+pub fn selection_sort(array: Vec<f64>) -> String {
+    let steps = algorithms::selection_sort::selection_sort(array);
+    let json = serde_json::to_string(&steps).unwrap();
+    return json;
+}
