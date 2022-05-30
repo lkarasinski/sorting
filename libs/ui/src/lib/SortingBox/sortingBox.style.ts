@@ -1,3 +1,4 @@
+import { red, violet } from '@radix-ui/colors';
 import { styled } from '@stitches/react';
 
 export const Box = styled('div', {
@@ -7,16 +8,16 @@ export const Box = styled('div', {
   variants: {
     state: {
       default: {
-        background: '#333',
+        background: violet.violet6,
       },
       compare: {
-        background: 'hsl(201, 80%, 30%)',
+        background: violet.violet8,
       },
       swap: {
-        background: 'hsl(201, 100%, 48%)',
+        background: violet.violet9,
       },
       highlight: {
-        background: 'hsl(349, 90%, 61%)',
+        background: red.red9,
       },
     },
   },
