@@ -1,5 +1,49 @@
+import * as React from 'react';
+import { SortingContainer } from '@sorting/ui';
+import { SortingAlgorithms } from '@sorting/types';
+import { ControlPanel } from '@sorting/ui';
+import { useSort } from '@sorting/hooks';
+import { useSortingSteps } from '../hooks/useSortingSteps';
+
 export function App() {
-  return <div></div>;
+  const {
+    algorithms,
+    visualizationData,
+    addNewAlgorithm,
+    state,
+    delay,
+    length,
+    nextState,
+  } = useSort(useSortingSteps);
+
+  return (
+    <div
+      style={{
+        maxWidth: 1024,
+        margin: '0 auto',
+      }}
+    >
+      {algorithms.selected.value.map((sort: SortingAlgorithms, index) => {
+        return (
+          <SortingContainer
+            algorithms={algorithms}
+            index={index}
+            key={sort}
+            animating={state === 'sorting'}
+            visualizationData={visualizationData[sort]}
+          />
+        );
+      })}
+      <ControlPanel
+        state={state}
+        nextState={nextState}
+        length={length}
+        delay={delay}
+        algorithms={algorithms}
+        addNewAlgorithm={addNewAlgorithm}
+      />
+    </div>
+  );
 }
 
 export default App;
