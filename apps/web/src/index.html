@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Web</title>
+    <title>Sorting Visualization</title>
     <base href="/" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -18,7 +18,24 @@
       input[type='number'] {
         -moz-appearance: textfield; /* Firefox */
       }
+      * {
+        font-family: 'Average Sans', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        overflow-x: hidden;
+        background: hsl(294, 5.5%, 95.3%);
+        scrollbar-gutter: stable;
+      }
     </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Average+Sans&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div id="root"></div>
