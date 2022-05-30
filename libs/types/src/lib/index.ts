@@ -19,3 +19,8 @@ export type SortingAlgorithms =
   | 'selection'
   | 'heap'
   | 'gnome';
+
+export type SortingAlgorithmsData = Record<
+  SortingAlgorithms,
+  VisualizationData
+>;
