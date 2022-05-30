@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { SortingContainer } from '@sorting/ui';
 import { SortingAlgorithms } from '@sorting/types';
-import { ControlPanel } from '@sorting/ui';
+import { ControlPanel, Header } from '@sorting/ui';
 import { useSort } from '@sorting/hooks';
 import { useSortingSteps } from '../hooks/useSortingSteps';
 
@@ -23,6 +23,7 @@ export function App() {
         margin: '0 auto',
       }}
     >
+      <Header />
       {algorithms.selected.value.map((sort: SortingAlgorithms, index) => {
         return (
           <SortingContainer
