@@ -3,6 +3,7 @@ import { BoxStateType, SortingAlgorithms } from '@sorting/types';
 import { SortingBox } from '../SortingBox';
 import { Container } from './sortingContainer.style';
 import { AlgorithmSelect } from '../AlgorithmSelect';
+import { useMemoizedFn } from 'ahooks';
 
 type Props = {
   visualizationData: {
@@ -10,20 +11,29 @@ type Props = {
     states: BoxStateType[];
   };
   animating: boolean;
-  selectedAlgorithm: SortingAlgorithms;
-  changeSelectedAlgorithm: (value: SortingAlgorithms) => void;
-  availableAlgorithms: SortingAlgorithms[];
-  allAlgorithms: SortingAlgorithms[];
+  index: number;
+  algorithms: {
+    selected: {
+      value: SortingAlgorithms[];
+      setValue: React.Dispatch<React.SetStateAction<SortingAlgorithms[]>>;
+    };
+    available: SortingAlgorithms[];
+    all: SortingAlgorithms[];
+  };
 };
 
 export const SortingContainer = ({
   visualizationData,
   animating,
-  selectedAlgorithm,
-  changeSelectedAlgorithm,
-  availableAlgorithms,
-  allAlgorithms,
+  algorithms,
+  index,
 }: Props) => {
+  const changeSelectedAlgorithm = useMemoizedFn((sort: SortingAlgorithms) => {
+    const newSelectedArray = [...algorithms.selected.value];
+    newSelectedArray[index] = sort;
+    algorithms.selected.setValue(newSelectedArray);
+  });
+
   return (
     <>
       <Container
@@ -41,10 +51,10 @@ export const SortingContainer = ({
       </Container>
       <AlgorithmSelect
         disabled={animating}
-        value={selectedAlgorithm}
+        value={algorithms.selected.value[index]}
         setValue={changeSelectedAlgorithm}
-        allAlgorithms={allAlgorithms}
-        availableAlgorithms={availableAlgorithms}
+        allAlgorithms={algorithms.all}
+        availableAlgorithms={algorithms.available}
       />
     </>
   );
