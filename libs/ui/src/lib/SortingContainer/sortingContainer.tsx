@@ -2,7 +2,7 @@ import * as React from 'react';
 import { BoxStateType, SortingAlgorithms } from '@sorting/types';
 import { SortingBox } from '../SortingBox';
 import { Container } from './sortingContainer.style';
-import _ from 'lodash';
+import { AlgorithmSelect } from '../AlgorithmSelect';
 
 type Props = {
   visualizationData: {
@@ -10,9 +10,10 @@ type Props = {
     states: BoxStateType[];
   };
   animating: boolean;
-  selectedAlgorithm: string;
+  selectedAlgorithm: SortingAlgorithms;
   changeSelectedAlgorithm: (value: SortingAlgorithms) => void;
   availableAlgorithms: SortingAlgorithms[];
+  allAlgorithms: SortingAlgorithms[];
 };
 
 export const SortingContainer = ({
@@ -21,6 +22,7 @@ export const SortingContainer = ({
   selectedAlgorithm,
   changeSelectedAlgorithm,
   availableAlgorithms,
+  allAlgorithms,
 }: Props) => {
   return (
     <>
@@ -37,19 +39,13 @@ export const SortingContainer = ({
           );
         })}
       </Container>
-      <select
+      <AlgorithmSelect
         disabled={animating}
         value={selectedAlgorithm}
-        onChange={(e) =>
-          changeSelectedAlgorithm(e.target.value as SortingAlgorithms)
-        }
-      >
-        {[selectedAlgorithm, ...availableAlgorithms].map((algorithm) => (
-          <option key={algorithm} value={algorithm}>
-            {_.capitalize(algorithm)} Sort
-          </option>
-        ))}
-      </select>
+        setValue={changeSelectedAlgorithm}
+        allAlgorithms={allAlgorithms}
+        availableAlgorithms={availableAlgorithms}
+      />
     </>
   );
 };
