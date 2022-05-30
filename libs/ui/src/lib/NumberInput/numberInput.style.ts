@@ -1,20 +1,26 @@
+import { blackA } from '@radix-ui/colors';
 import { styled } from '@stitches/react';
 
 export const Container = styled('div', {
-  border: '1px solid black',
-  padding: 8,
+  padding: 12,
   margin: 0,
-  borderRadius: 8,
-});
+  borderRadius: 4,
+  background: 'white',
+  boxShadow: `0 2px 10px ${blackA.blackA7}`,
 
-export const Text = styled('p', {
-  margin: '0 0 10px 0',
-  padding: 0,
-  fontSize: 16,
+  variants: {
+    state: {
+      disabled: {
+        opacity: 0.5,
+        cursor: 'not-allowed',
+      },
+      default: {
+        opacity: 1,
+        cursor: 'default',
+      },
+    },
+  },
+  defaultVariants: {
+    state: 'default',
+  },
 });
-
-export const InputContainer = styled('div', {
-  display: 'flex',
-});
-
-export const Input = styled('input', {});
