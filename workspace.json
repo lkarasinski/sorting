@@ -4,6 +4,7 @@
   "projects": {
     "algorithms": "libs/algorithms",
     "functions": "libs/functions",
+    "hooks": "libs/hooks",
     "types": "libs/types",
     "ui": "libs/ui",
     "wasm": "libs/wasm",
