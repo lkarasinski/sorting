@@ -6,4 +6,5 @@ export const Container = styled('div', {
   alignItems: 'flex-end',
   height: 200,
   width: '100%',
+  margin: '16px 0 8px 0',
 });
