@@ -4,6 +4,7 @@ import { SortingBox } from '../SortingBox';
 import { Container } from './sortingContainer.style';
 import { AlgorithmSelect } from '../AlgorithmSelect';
 import { useMemoizedFn } from 'ahooks';
+import { Button } from '../Button';
 
 type Props = {
   visualizationData: {
@@ -34,6 +35,13 @@ export const SortingContainer = ({
     algorithms.selected.setValue(newSelectedArray);
   });
 
+  const removeAlgorithm = useMemoizedFn(() => {
+    const newSelectedArray = algorithms.selected.value.filter(
+      (algorithm, i) => i !== index
+    );
+    algorithms.selected.setValue([...newSelectedArray]);
+  });
+
   return (
     <>
       <Container
@@ -49,13 +57,23 @@ export const SortingContainer = ({
           );
         })}
       </Container>
-      <AlgorithmSelect
-        disabled={animating}
-        value={algorithms.selected.value[index]}
-        setValue={changeSelectedAlgorithm}
-        allAlgorithms={algorithms.all}
-        availableAlgorithms={algorithms.available}
-      />
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <AlgorithmSelect
+          disabled={animating}
+          value={algorithms.selected.value[index]}
+          setValue={changeSelectedAlgorithm}
+          allAlgorithms={algorithms.all}
+          availableAlgorithms={algorithms.available}
+        />
+        {algorithms.selected.value.length > 1 && (
+          <Button
+            onClick={removeAlgorithm}
+            disabled={algorithms.selected.value.length <= 1}
+          >
+            Remove
+          </Button>
+        )}
+      </div>
     </>
   );
 };
