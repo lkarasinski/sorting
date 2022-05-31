@@ -19,6 +19,17 @@ type ControlPanelProps = {
   };
 };
 
+const getButtonText = (state: ControlPanelProps['state']) => {
+  switch (state) {
+    case 'sorting':
+      return 'Stop and reset';
+    case 'sorted':
+      return 'Randomize';
+    case 'randomized':
+      return 'Start sorting';
+  }
+};
+
 export const ControlPanel = ({
   nextState,
   length,
@@ -47,13 +58,7 @@ export const ControlPanel = ({
         </Button>
         <NumberInput {...length} id={'length'} disabled={state === 'sorting'} />
         <NumberInput {...delay} id={'delay'} />
-        <Button onClick={nextState} disabled={state === 'sorting'}>
-          {state === 'randomized'
-            ? 'Begin Sort'
-            : state === 'sorted'
-            ? 'Reset'
-            : 'Sorting...'}
-        </Button>
+        <Button onClick={nextState}>{getButtonText(state)}</Button>
       </div>
     </div>
   );
