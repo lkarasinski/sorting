@@ -68,7 +68,7 @@ export const SortingContainer = ({
         {algorithms.selected.value.length > 1 && (
           <Button
             onClick={removeAlgorithm}
-            disabled={algorithms.selected.value.length <= 1}
+            disabled={algorithms.selected.value.length <= 1 || animating}
           >
             Remove
           </Button>
