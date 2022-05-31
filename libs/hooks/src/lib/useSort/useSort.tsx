@@ -23,8 +23,8 @@ type StepData = Record<SortingAlgorithms, Step[]>;
 export const useSort = (
   useSortingSteps: (visualizationData: SortingAlgorithmsData) => StepData
 ) => {
-  const [length, setLength] = React.useState(10);
-  const [delay, setDelay] = React.useState(10);
+  const [length, setLength] = React.useState(100);
+  const [delay, setDelay] = React.useState(50);
   const latestDelay = useLatest(delay);
   const [state, setState] = React.useState<'randomized' | 'sorting' | 'sorted'>(
     'randomized'
