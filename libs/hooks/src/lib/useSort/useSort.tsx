@@ -59,8 +59,6 @@ export const useSort = (
   );
 
   const beginAnimation = async () => {
-    // Wait for lenght debounce to finish
-    sleep(300);
     selectedAlgorithms.forEach(async (sort) => {
       if (steps[sort]) {
         const currentSteps = [...steps[sort]];
@@ -91,6 +89,8 @@ export const useSort = (
     switch (state) {
       // If array is randomized, begin animation and set state to sorting
       case 'randomized':
+        // Wait for length debounce to finish
+        await sleep(100);
         setState('sorting');
         beginAnimation();
         break;

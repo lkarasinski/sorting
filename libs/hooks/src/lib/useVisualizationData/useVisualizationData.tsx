@@ -21,7 +21,7 @@ export const useVisualizationData: UseVisualizationData = (
   arrayLength,
   setState
 ) => {
-  const debouncedLength = useDebounce(arrayLength, { wait: 300 });
+  const debouncedLength = useDebounce(arrayLength, { wait: 100 });
 
   const [visualizationData, setVisualizationData] =
     React.useState<SortingAlgorithmsData>(() => {
