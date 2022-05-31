@@ -46,6 +46,7 @@ export const useVisualizationData: UseVisualizationData = (
       heap: JSON.parse(JSON.stringify(newData)),
       gnome: JSON.parse(JSON.stringify(newData)),
     });
+    setState('randomized');
   });
 
   React.useEffect(() => {

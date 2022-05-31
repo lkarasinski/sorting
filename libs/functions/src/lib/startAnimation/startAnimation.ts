@@ -6,6 +6,8 @@ type Props = {
   setVisualizationData: React.Dispatch<React.SetStateAction<VisualizationData>>;
   steps: Step[];
   delay: React.MutableRefObject<number>;
+  stop: React.MutableRefObject<boolean>;
+  resetData: () => void;
 };
 
 export const startAnimation = async ({
@@ -13,8 +15,14 @@ export const startAnimation = async ({
   setVisualizationData,
   steps,
   delay,
+  stop,
+  resetData,
 }: Props) => {
   for (const step of steps) {
     await animateStep({ step, visualizationData, setVisualizationData, delay });
+    if (stop?.current) {
+      resetData();
+      break;
+    }
   }
 };

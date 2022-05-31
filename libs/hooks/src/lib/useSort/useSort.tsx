@@ -37,6 +37,7 @@ export const useSort = (
   const [selectedAlgorithms, setSelectedAlgorithms] = React.useState<
     SortingAlgorithms[]
   >(['quick']);
+  const stopAnimation = React.useRef<boolean>(false);
 
   // Set state to sorted when all algorithms are sorted
   useDebounceEffect(
@@ -67,40 +68,45 @@ export const useSort = (
           steps: currentSteps,
           delay: latestDelay,
           setVisualizationData: () => updateData(sort, visualizationData[sort]),
+          stop: stopAnimation,
+          resetData,
         });
       }
     });
   };
 
-  const addNewAlgorithm = () => {
+  const addNewAlgorithm = useMemoizedFn(() => {
     if (availableAlgorithms.length > 0) {
       setSelectedAlgorithms([...selectedAlgorithms, availableAlgorithms[0]]);
       resetData();
     }
-  };
+  });
 
   // Reset data when selected algorithms change
   useDeepCompareEffect(() => {
     resetData();
     setState('randomized');
+    stopAnimation.current = false;
   }, [selectedAlgorithms]);
 
-  const nextState = useMemoizedFn(() => {
+  const nextState = useMemoizedFn(async () => {
     switch (state) {
       // If array is randomized, begin animation and set state to sorting
       case 'randomized':
         // Wait for length debounce to finish
         await sleep(100);
+        stopAnimation.current = false;
         setState('sorting');
         beginAnimation();
         break;
       // If array is sorted randomize it and set state to randomized
       case 'sorted':
-        setState('randomized');
         resetData();
         break;
-      // If array is sorting, do nothing
+      // If array is sorting, pause the animation and reset the array
+      // Array will be reset when animating function sees stopAnimation.current === true
       case 'sorting':
+        stopAnimation.current = true;
         break;
     }
   });
