@@ -4,6 +4,8 @@ Sorting visualizer made in React, Rust and WASM.
 
 Steps required to sort the array are calculated in WASM and then animated on the frontend.
 
+[View more](https://www.lkarasinski.pl/sorting)
+
 ## Screenshots
 
 ![App Screenshot](https://s3.eu-west-3.amazonaws.com/www.data.lkarasinski.pl/sorting.png)
