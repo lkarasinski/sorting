@@ -21,6 +21,7 @@ export function App() {
       style={{
         maxWidth: 1024,
         margin: '0 auto',
+        padding: '0 10px',
       }}
     >
       <Header />

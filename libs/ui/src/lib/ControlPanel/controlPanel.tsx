@@ -48,6 +48,7 @@ export const ControlPanel = ({
           flexDirection: 'column',
           maxWidth: 200,
           margin: '0 auto',
+          padding: '10px',
         }}
       >
         <Button
